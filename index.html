@@ -1,0 +1,120 @@
+
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>torqueControl</title>
+    <link href="./css/libs/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/bootstrap-icons.min.css" rel="stylesheet">
+    <link href="./css/style.css" rel="stylesheet">
+        <!-- SheetJS for Excel import/export -->
+  </head>
+  <body>
+    <header class="container-fluid py-2 mb-2">
+    </header>
+    <main class="container-fluid">
+        <div class="row g-3">
+            <!-- Left: Screws list -->
+            <aside class="col-12 col-md-3 col-lg-3">
+                <div class="card shadow-sm">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <span><i class="bi bi-list-check me-1" aria-hidden="true"></i>Screws</span>
+                        <div class="btn-group btn-group-sm" role="group" aria-label="Screw actions">
+                            <button id="addScrewButton" type="button" class="btn btn-outline-success">
+                                <i class="bi bi-plus-lg me-1" aria-hidden="true"></i>
+                                New
+                            </button>
+                            <button id="deleteScrewButton" type="button" class="btn btn-outline-danger">
+                                <i class="bi bi-trash me-1" aria-hidden="true"></i>
+                                Delete
+                            </button>
+                        </div>
+                    </div>
+                    <ul id="screwList" class="list-group list-group-flush screw-list" aria-label="Imported screws list">
+                        <!-- Dynamically populated -->
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- Middle: Controls -->
+            <section class="col-12 col-md-7 col-lg-7">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+
+                        <h5 id="screwTitle" class="card-title mb-3 d-none">Screw</h5>
+                        <input id="screwNameInput" type="text" class="form-control form-control-sm mb-3" placeholder="Enter screw name">
+
+                        <div class="mb-4">
+                            <label for="torqueSlider" class="form-label touch-label">Torque: <span id="torqueValue"></span></label>
+                            <input type="range" class="form-range touch-range" id="torqueSlider">
+                        </div>
+                        <div id="torqueButtons" class="mb-4 d-flex flex-wrap gap-2">
+                            <!-- torque preset buttons populated dynamically -->
+                        </div>
+
+                        <div class="mb-4">
+                            <label for="speedSlider" class="form-label touch-label">Speed: <span id="speedValue"></span></label>
+                            <input type="range" class="form-range touch-range" id="speedSlider">
+                        </div>
+                        <div id="speedButtons" class="d-flex flex-wrap gap-2">
+                            <!-- speed preset buttons populated dynamically -->
+                        </div>
+                    </div>
+                    <div class="card-footer bg-light">
+                        <div class="d-flex justify-content-end align-items-center">
+                            <div class="btn-group" role="group" aria-label="Navigate screws">
+                                <button id="prevButton" type="button" class="btn btn-outline-primary btn-lg" title="Previous">
+                                    <i class="bi bi-chevron-left me-1" aria-hidden="true"></i>
+                                    Prev
+                                </button>
+                                <button id="nextButton" type="button" class="btn btn-outline-primary btn-lg" title="Next">
+                                    Next
+                                    <i class="bi bi-chevron-right ms-1" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right: Import/Export -->
+            <aside class="col-12 col-md-2 col-lg-2">
+                <div class="card shadow-sm">
+                    <div class="card-header"><i class="bi bi-gear me-1" aria-hidden="true"></i>Settings</div>
+                    <div class="card-body d-grid gap-2">
+                        <button id="lockButton" type="button" class="btn btn-outline-secondary">
+                            <i class="bi bi-lock me-1" aria-hidden="true"></i>
+                            Lock controls
+                        </button>
+                        <button id="connectButton" type="button" class="btn btn-success">
+                            <i class="bi bi-plug me-1" aria-hidden="true"></i>
+                            Connect
+                        </button>
+                        <button id="exportButton" type="button" class="btn btn-secondary">
+                            <i class="bi bi-file-earmark-arrow-down me-1" aria-hidden="true"></i>
+                            Export
+                        </button>
+                        <button id="importButton" type="button" class="btn btn-secondary">
+                            <i class="bi bi-file-earmark-arrow-up me-1" aria-hidden="true"></i>
+                            Import
+                        </button>
+                        <input id="importFile" type="file" accept=".xlsx,.xls" class="d-none" />
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </main>
+    <footer>
+        <p class="mx-2">Developed by L. Jelschen - Version 1.0</p>
+    </footer>
+
+  <script src="./js/libs/bootstrap.bundle.min.js"></script>
+  <script src="./js/libs/xlsx.full.min.js"></script>
+  <script src="./js/serialCom.js"></script>
+  <script src="./js/uiFunctions.js"></script>
+  <script src="./js/main.js"></script>
+  </body>
+</html>
+
